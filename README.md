@@ -19,7 +19,7 @@ The pipeline implements a classic **Medallion Architecture** pattern, transformi
 
 - **Fact_Sales** (Fact table)
 - **Dim_Product** (Dimension table with SCD Type 2)
-- **Dim_Store** (Dimension table with SCD Type 2)
+- **Dim_Store** (Dimension table)
 
 ---
 
