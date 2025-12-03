@@ -10,10 +10,10 @@
 
 import sys
 
-sys.path.append("/Workspace/Users/awaisajaz1@gmail.com/Spark-Declarative-Pipeline")
+# sys.path.append("/Workspace/Users/awaisajaz1@gmail.com/Spark-Declarative-Pipeline")
 
 # COMMAND ----------
 
 # !!! Before performing any data analysis, make sure to run the pipeline to materialize the sample datasets. The tables referenced in this notebook depend on that step.
 
-display(spark.sql("SELECT * FROM sdp.source.sample_aggregation_spark_declarative_pipeline"))
+display(spark.sql("SELECT * FROM sdp.source.sales"))
