@@ -12,7 +12,7 @@ def products_with_sk():
         # .withColumn("product_sk", monotonically_increasing_id())
         .withColumn(
             "product_sk",
-            hash(concat(col("product_id"), col("read_ts")))
+            abs(hash(concat(col("product_id"), col("read_ts"))))
         )
     )
 
