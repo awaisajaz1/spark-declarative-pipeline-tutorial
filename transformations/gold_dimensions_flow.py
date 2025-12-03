@@ -49,6 +49,6 @@ def dim_stores():
         # .withColumn("store_sk", monotonically_increasing_id())
         .withColumn(
             "product_sk",
-            hash(concat(col("store_id"), col("read_ts")))
+            abs(hash(concat(col("store_id"), col("read_ts"))))
         )
     )

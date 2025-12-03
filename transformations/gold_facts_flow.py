@@ -33,6 +33,7 @@ def sales_transaction_with_dims():
             dim_product.product_sk,
             dim_product.product_name,
             silver_sales.revenue,
+            silver_sales.comment.alias("cusomer_review"),
             silver_sales.customer_sentiments,
             silver_sales.order_state,
             silver_sales.profit,
