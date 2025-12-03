@@ -29,7 +29,8 @@ dp.create_auto_cdc_flow(
     stored_as_scd_type=2,
     track_history_except_column_list=[
         "product_name", 
-        "category"
+        "category",
+        "price"
     ],
     ignore_null_updates=True
 )
