@@ -7,10 +7,21 @@ from pyspark.sql.functions import *
 # 3. Write the data to the silver table
 # Read the data from the bronze table
 
+
+rules = {
+    "rule1": "order_state is not null",
+    "rule2": "revenue < 0"
+    }
+
+
+
 @dp.table(
     comment='Sales Silver Table',
     name='sdp.silver.silver_sales_order'
     )
+@dp.expect_all(rules)
+# @dp.expect_all_or_fail(rules)
+# @dp.expect_all_or_drop(rules)
 def read_bronze():
     return (
         spark.readStream
