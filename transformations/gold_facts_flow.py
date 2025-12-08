@@ -57,7 +57,17 @@ dp.create_auto_cdc_flow(
 
 
 ## Lets call a loop using metadata json file to read and write dynamic table
-with open("/Workspace/Users/awaisajaz1@gmail.com/sdp-tutorial/metadata/jobs.json", "r") as f:
+def create_table_dynamically(order_state_value, catalog, schema, table):
+    @dp.table(name=f"{catalog}.{schema}.{table}")
+    def read_table():
+        df = spark.readStream.table("sales_transaction_with_dims")
+        return df.filter(f"order_state == '{order_state_value}'")
+    return read_table
+
+with open(
+    "/Workspace/Users/awaisajaz1@gmail.com/sdp-tutorial/metadata/jobs.json",
+     "r"
+    ) as f:
     my_list = json.load(f)
 
 for item in my_list:
@@ -69,8 +79,5 @@ for item in my_list:
 
     print(f"Processing item: {item}", order_state)
 
-    @dp.table(name=f"{catalog}.{schema}.{table}")
-    def read_table():
-        df = spark.readStream.table("sales_transaction_with_dims")
-        return df.filter(f"order_state == '{order_state}'")
-
+    # Create the table function with captured values
+    create_table_dynamically(order_state, catalog, schema, table)
