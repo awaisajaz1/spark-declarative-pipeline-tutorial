@@ -1,6 +1,6 @@
 from pyspark import pipelines as dp
 from pyspark.sql.functions import *
-
+import json
 # we shall follow upsert approch to load the fact table in gold layer
 # we shall utilized temporary view to to prepare the date by joining dimension and the push to downstream with SCD1
 
@@ -54,3 +54,21 @@ dp.create_auto_cdc_flow(
     sequence_by=col("record_timestamp"),
     stored_as_scd_type=1
 )
+
+
+## Lets call a loop using metadata json file to read and write dynamic table
+with open("/Workspace/Users/awaisajaz1@gmail.com/sdp-tutorial/metadata/jobs.json", "r") as f:
+    my_list = json.load(f)
+
+for item in my_list:
+    # process each item
+    catalog = item["catalog"]
+    schema = item["schema"]
+    table = item["table_name"]
+    order_state = item["order_state"]
+
+    @dp.table(name=f"{catalog}.{schema}.{table}")
+    def read_table():
+        df = spark.readStream.table("sales_transaction_with_dims")
+        return df.filter(col("order_state") == order_state)
+

@@ -1,0 +1,14 @@
+[
+	{
+		"catalog": "sdp",
+		"schema": "gold",
+		"table_name": "paid_orders",
+		"order_state": "Paid"
+	},
+	{
+		"catalog": "sdp",
+		"schema": "gold",
+		"table_name": "Failed_orders",
+		"order_state": "Failed"
+	}
+]
