@@ -14,7 +14,9 @@ To get started, go to the `transformations` folder -- most of the relevant sourc
 
 * By convention, every dataset under `transformations` is in a separate file.
 * Take a look at the sample under "sample_users_spark_declarative_pipeline.py" to get familiar with the syntax.
-  Read more about the syntax at https://docs.databricks.com/ldp/developer/python-ref.
+  Read more about the syntax at: 
+  https://spark.apache.org/docs/4.1.0-preview1/declarative-pipelines-programming-guide.html
+  https://docs.databricks.com/ldp/developer/python-ref.
 * Use `Run file` to run and preview a single transformation.
 * Use `Run pipeline` to run _all_ transformations in the entire pipeline.
 * Use `+ Add` in the file browser to add a new data set definition.
