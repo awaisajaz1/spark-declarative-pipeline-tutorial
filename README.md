@@ -24,7 +24,7 @@ This pipeline leverages Databricks Lakeflow Declarative Pipelines to implement a
 ![screenshot](process-flow/pipeline_iteration_two.png)
 
 ### Output: Powerbi
-![screenshot](process-flow/Dashbaord.png)
+![screenshot](process-flow/Dashboard.png)
 
 ## Getting Started
 
