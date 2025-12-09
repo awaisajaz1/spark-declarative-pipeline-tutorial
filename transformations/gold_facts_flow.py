@@ -97,10 +97,10 @@ dp.create_streaming_table(
 )
 
 # Step 2: Create a flow to merge the data coming from two or more streams and write to a single table   
-dp.create_append_flow(target="sdp.gold.sales_fact_append")
+@dp.append_flow(target="sdp.gold.sales_fact_append")
 def paid_orders():
     return spark.readStream.table("sdp.silver.silver_sales_order").filter("order_state == 'Paid'")
 
-dp.create_append_flow(target="sdp.gold.sales_fact_append")
+@dp.append_flow(target="sdp.gold.sales_fact_append")
 def failed_orders():
     return spark.readStream.table("sdp.silver.silver_sales_order").filter("order_state == 'Failed'")
